@@ -1,0 +1,6 @@
+selenium
+Appium-Python-Client
+
+requests
+python-box
+PyYAML
