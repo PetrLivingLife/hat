@@ -1,4 +1,5 @@
 selenium
+webdriver-manager
 Appium-Python-Client
 
 requests
