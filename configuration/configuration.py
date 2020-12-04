@@ -14,36 +14,39 @@ def load_yaml(filepath):
         return safe_load(f.read())
 
 
-def setup_logging(level=logging.INFO):
-    logs_location = path.join(getcwd(),
-                              # TODO remove once this is being called from main script, also in logging.cnf.yaml
-                              "..",
-                              "logs",)
-
+def setup_logging(log_config_filepath=None,
+                  logs_output_path=None,
+                  logging_level=None):
+    logs_location = logs_output_path or path.join(getcwd(),
+                                                  "logs",)
     check_or_create_dir(logs_location)
 
-    filepath = path.join(getcwd(),
-                         # TODO once this is being run from main script
-                         # "configuration",
-                         "logging_configuration.yaml", )
+    log_config_filepath = log_config_filepath or path.join(getcwd(),
+                                                           "configuration",
+                                                           "logging_configuration.yaml", )
 
-    if path.exists(filepath):
-        logging.config.dictConfig(load_yaml(filepath))
+    if path.exists(log_config_filepath):
+        logging.config.dictConfig(load_yaml(log_config_filepath))
+        if logging_level:
+            root_logger = logging.getLogger()
+            root_logger.handlers[0].setLevel(logging_level)
+            root_logger.handlers[1].setLevel(logging_level)
 
     else:
-        standard_formatter = logging.Formatter('%(asctime)s - %(levelname)-8s: %(message)s')
-        debug_formatter = logging.Formatter('%(asctime)s - %(levelname)-8s - %(name)10s.%(funcName)15s() : %(message)s')
+        logging_level = logging_level or logging.INFO
+        standard_formatter = logging.Formatter('{asctime} [{levelname:<8}]: {message}', style='{')
+        debug_formatter = logging.Formatter('{asctime} [{levelname:<8}] {name}.{funcName}(): {message}', style='{')
 
         # Console setup
         ch = logging.StreamHandler()
-        ch.setLevel(level)
+        ch.setLevel(logging_level)
         ch.setFormatter(standard_formatter)
 
         # Standard log file
         fh = logging.handlers.RotatingFileHandler(path.join(logs_location, "uat.log"),
                                                   maxBytes=1048576,
                                                   backupCount=10,)
-        fh.setLevel(level)
+        fh.setLevel(logging_level)
         fh.setFormatter(standard_formatter)
 
         # Debug
@@ -59,33 +62,17 @@ def setup_logging(level=logging.INFO):
         root_logger.addHandler(fh)
         root_logger.addHandler(fh_debug)
 
-        root_logger.error(f"Couldn't load logging configuration from '{filepath}'. "
-                          "Used default configuration. "
-                          f"Logs: {logs_location} "
-                          f"Level: {level} "
-                          )
+        logger = logging.getLogger(__name__)
+
+        logger.error(f"Couldn't load logging configuration from '{log_config_filepath}'. "
+                     "Used default configuration. "
+                     f"Logs: {logs_location} "
+                     f"Level: {logging_level} "
+                     )
 
 
 def load_config(profile):
     filepath = path.join(getcwd(),
-                         # TODO once this is being run from main script
-                         # "configuration",
+                         "configuration",
                          f"{profile}.yaml")
     return Box(load_yaml(filepath))
-
-
-# Testing
-if __name__ == '__main__':
-    cnf = load_config("twitter")
-    setup_logging()
-
-    logger = logging.getLogger()
-    print(logger.handlers)
-
-    # logger.debug("logger debug msg here")
-    # logger.info("logger info msg here")
-    # logger.warning("logger warn msg here")
-
-    logging.debug("debug msg here")
-    logging.info("info msg here")
-    logging.warning("warning msg here")
