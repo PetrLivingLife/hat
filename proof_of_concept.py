@@ -13,12 +13,12 @@ from unittest import main as unittest_main
 
 class Chrome(Chrome_):
     def __init__(self):
-        super(Chrome, self).__init__(ChromeDriverManager().install())
+        super().__init__(ChromeDriverManager().install())
 
 
 class Firefox(Firefox_):
     def __init__(self):
-        super(Firefox, self).__init__(executable_path=GeckoDriverManager().install())
+        super().__init__(executable_path=GeckoDriverManager().install())
 
 
 class Android(object):
