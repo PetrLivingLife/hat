@@ -38,7 +38,7 @@ class Locator(object):
     def __get__(self, instance, owner):
         # TODO Resolve why this is never called -> need to unpack those manually
         #   might be something with metaclasses, plus this not being on actual instance... - probably not worth it
-        #   using __call and locator() instead for now
+        #   using __call__ and locator() instead for now
         return self.path_type, self.path
 
     def __call__(self):
