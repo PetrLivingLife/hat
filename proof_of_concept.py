@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-from appium import webdriver as appium_driver
+# from appium import webdriver as appium_driver
 
 from unittest import TestCase
 from unittest import main as unittest_main
