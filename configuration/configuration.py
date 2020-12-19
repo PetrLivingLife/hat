@@ -34,8 +34,8 @@ def setup_logging(log_config_filepath=None,
 
     else:
         logging_level = logging_level or logging.INFO
-        standard_formatter = logging.Formatter('{asctime} [{levelname:<8}]: {message}', style='{')
-        debug_formatter = logging.Formatter('{asctime} [{levelname:<8}] {name}.{funcName}(): {message}', style='{')
+        standard_formatter = logging.Formatter('{asctime} [{levelname:^8}]: {message}', style='{')
+        debug_formatter = logging.Formatter('{asctime} [{levelname:^8}] {name}.{funcName}(): {message}', style='{')
 
         # Console setup
         ch = logging.StreamHandler()

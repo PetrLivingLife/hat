@@ -4,11 +4,11 @@ disable_existing_loggers:   False
 
 formatters:
   standard:
-    format:                 '{asctime} [{levelname:<8}]: {message}'
+    format:                 '{asctime} [{levelname:^8}]: {message}'
     style:                  '{'
 #    datefmt:                '%Y-%m-%d-%H:%M:%S'
   debug:
-    format:                 '{asctime} [{levelname:<8}] {name}.{funcName}(): {message}'
+    format:                 '{asctime} [{levelname:^8}] {name}.{funcName}(): {message}'
     style:                  '{'
 
 handlers:
