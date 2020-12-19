@@ -107,14 +107,14 @@ class App(object):
 
         # Add shortcuts
         self.quit = self.app_driver.quit.__get__(self, self.__class__)
-        self.go_to = self.app_driver.get.__get__(self, self.__class__)
+        self.go_to_url = self.app_driver.get.__get__(self, self.__class__)
 
 
 class BaseTest(TestCase):
     def setUp(self) -> None:
         # self.app = App(Chrome())
         self.app = App(Firefox())
-        self.app.go_to("https://seznam.cz")
+        self.app.go_to_url("https://seznam.cz")
 
     def tearDown(self) -> None:
         self.app.quit()
