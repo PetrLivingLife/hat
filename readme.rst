@@ -3,7 +3,7 @@ Universal testing helper
 
 Nothing revolutionary in here. Though I haven't seen such project/library/framework (that would be actually good and usable).
 
-For now this is very simple prototype to evolve. Idea is to have one place for most/all testing needed in a project.
+For now this is very simple prototype to evolve. Idea is to have most/all (automated) testing needed in a project in one place.
 
 For any part of the application/system/multiple applications driver(s) can be written and then used in tests.
 
