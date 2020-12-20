@@ -8,3 +8,7 @@ For now this is very simple prototype to evolve. Idea is to have most/all (autom
 For any part of the application/system/multiple applications driver(s) can be written and then used in tests.
 
 You can see high level structure with example drivers at https://miro.com/app/board/o9J_lezi47Y=/
+
+Tracking tasks, bugs, features at (private for now) https://app.clickup.com/2507589/v/b/s/6727213
+
+- Move TODOs there (haha)
