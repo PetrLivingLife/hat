@@ -3,15 +3,9 @@ import logging
 import logging.config
 import logging.handlers
 
-from yaml import safe_load
 from box import Box
 
-from utilities import check_or_create_dir
-
-
-def load_yaml(filepath):
-    with open(filepath, 'r') as f:
-        return safe_load(f.read())
+from utilities import check_or_create_dir, load_yaml
 
 
 def setup_logging(log_config_filepath=None,
