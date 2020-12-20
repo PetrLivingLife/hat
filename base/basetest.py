@@ -11,8 +11,7 @@ class BaseTest(_TestCase):
     def setUp(self) -> None:
         self.app = AppUi(Firefox())
         # self.app = AppUi(Chrome())
-        self.app.go_to(cfg.URL)
-
+        # self.app.go_to_url(cfg.URL)
 
     def tearDown(self) -> None:
         self.app.quit()
