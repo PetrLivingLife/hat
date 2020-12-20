@@ -5,7 +5,7 @@ Nothing revolutionary in here. Though I haven't seen such project/library/framew
 
 For now this is very simple prototype to evolve. Idea is to have most/all (automated) testing needed in a project in one place.
 
-For any part of the application/system/multiple applications driver(s) can be written and then used in tests.
+Driver/s can be written for any part of the application/system/multiple applications and then used in tests. Most of the time via additional layer/s that will simplify the usage.
 
 You can see high level structure with example drivers at https://miro.com/app/board/o9J_lezi47Y=/
 
