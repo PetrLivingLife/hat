@@ -1,4 +1,4 @@
-Universal testing helper
+Application testing helper
 ========================
 
 Nothing revolutionary in here. Though I haven't seen such project/library/framework (that would be actually good and usable).
