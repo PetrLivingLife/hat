@@ -17,7 +17,7 @@ class BaseTest(_TestCase):
 
     def setUp(self) -> None:
         self.log = logging.getLogger(__name__)
-        log.info(f"Test case setup")
+        self.log.info(f"Test case setup")
         self.app = AppUi(Firefox())
         # self.app = AppUi(Chrome())
         # self.app.go_to_url(cfg.URL)
