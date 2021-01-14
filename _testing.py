@@ -11,10 +11,10 @@ configuration.setup_logging(
     # logging_level=logging.DEBUG,
 )
 
-logger = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
-logger.debug("logger debug msg here")
-logger.info("logger info msg here")
-logger.warning("logger warning msg here")
-logger.error("logger error msg here")
-logger.critical("logger critical msg here")
+log.debug("logger debug msg here")
+log.info("logger info msg here")
+log.warning("logger warning msg here")
+log.error("logger error msg here")
+log.critical("logger critical msg here")

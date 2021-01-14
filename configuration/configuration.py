@@ -56,9 +56,9 @@ def setup_logging(log_config_filepath=None,
         root_logger.addHandler(fh)
         root_logger.addHandler(fh_debug)
 
-        logger = logging.getLogger(__name__)
+        log = logging.getLogger(__name__)
 
-        logger.error(f"Couldn't load logging configuration from '{log_config_filepath}'. "
+        log.error(f"Couldn't load logging configuration from '{log_config_filepath}'. "
                      "Used default configuration. "
                      f"Logs: {logs_location} "
                      f"Level: {logging_level} "
