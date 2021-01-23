@@ -1,5 +1,5 @@
 Application testing helper
-========================
+==========================
 
 Nothing revolutionary in here. Though I haven't seen such project/library/framework (that would be actually good and usable).
 
@@ -11,11 +11,10 @@ You can see high level structure with example drivers at https://miro.com/app/bo
 
 Tracking tasks, bugs, features at (private for now) https://app.clickup.com/2507589/v/b/s/6727213
 
-- Move TODOs there (haha)
-
 Repositories:
- (main for now) https://gitlab.com/petrszturc/application-testing-helper
- https://github.com/PetrSzturc/application-testing-helper
+
+* (main for now) https://gitlab.com/petrszturc/application-testing-helper
+* https://github.com/PetrSzturc/application-testing-helper
 
 Documentation:
  none yet.
