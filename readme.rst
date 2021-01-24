@@ -1,6 +1,8 @@
 Application testing helper
 ==========================
 
+PROTOTYPE - this project is currently in very early phase. Not usable for anything yet.
+
 Nothing revolutionary in here. Though I haven't seen such project/library/framework (that would be actually good and usable).
 
 For now this is very simple prototype to evolve. Idea is to have most/all (automated) testing needed in a project in one place.
