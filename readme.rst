@@ -16,7 +16,7 @@ Tracking tasks, bugs, features at (private for now) https://app.clickup.com/2507
 Repositories:
 
 * (main for now) https://gitlab.com/petrszturc/application-testing-helper
-* https://github.com/PetrSzturc/application-testing-helper
+* https://github.com/petrszturc/application-testing-helper
 
 Documentation:
  none yet.
