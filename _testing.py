@@ -17,7 +17,7 @@ from selenium.webdriver.common.keys import Keys
 #######
 
 
-class SearchSeznam(BaseTest):
+class TestSearch(BaseTest):
 
     def test_simple_search(self):
         log = logging.getLogger(__name__)
@@ -28,7 +28,3 @@ class SearchSeznam(BaseTest):
         search.send_keys(Keys.ENTER)
         log.info("Waiting for search results")
         sleep(3)
-
-from unittest import main
-
-main()
