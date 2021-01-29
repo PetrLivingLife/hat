@@ -8,7 +8,7 @@ formatters:
     style:                  '{'
 #    datefmt:                '%Y-%m-%d-%H:%M:%S'
   debug:
-    format:                 '{asctime} - {levelname:<8} {name}.{funcName}(): {message}'
+    format:                 '{asctime} - {levelname:<8} {name}.{funcName}() - line {lineno}: {message}'
     style:                  '{'
 
 handlers:

@@ -63,6 +63,8 @@ def setup_logging(log_config_filepath=None,
                      f"Logs: {logs_location} "
                      f"Level: {logging_level} "
                      )
+    log = logging.getLogger(__name__)
+    log.info(f"##### New session #####")
 
 
 def load_config(profile):
