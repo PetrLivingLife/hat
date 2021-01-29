@@ -10,13 +10,14 @@ from configuration import configuration as cfg
 
 class BaseTest(_TestCase):
 
+
     def setUp(self) -> None:
-        self.log = logging.getLogger(__name__)
-        self.log.info(f"Test case setup")
+        log = logging.getLogger(__name__)
+        log.info(f"Test case setup")
         self.app = AppUi(Firefox())
-        # self.app = AppUi(Chrome())
-        # self.app.go_to_url(cfg.URL)
 
     def tearDown(self) -> None:
-        self.log.info(f"Closing application.")
+        log = logging.getLogger(__name__)
+        log.info(f"Cleaning after test.")
+        log.info(f"Closing application.")
         self.app.quit()
