@@ -1,6 +1,9 @@
 image:
   file: .gitpod.Dockerfile
 
+tasks:
+  - init: ./gitpod_setup.sh
+
 ports:
   - port: 6080
     onOpen: open-preview
@@ -8,8 +11,3 @@ ports:
   - port: 5900
     onOpen: ignore
     visibility: private
-
-tasks:
-  - init: export PATH=/workspace/application-testing-helper:$PATH
-  - init: pip install --upgrade pip
-  - init: pip install -r ./requirements.txt
