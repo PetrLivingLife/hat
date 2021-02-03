@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 #         pass
 
 
-class SearchSeznam(BaseTest):
+class TestSearchSeznam(BaseTest):
 
     def test_simple_search(self):
         self.app.go_to_url("https://seznam.cz")
