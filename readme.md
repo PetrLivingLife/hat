@@ -1,5 +1,4 @@
-Application testing helper
-==========================
+# Application testing helper
 
 PROTOTYPE - this project is currently in very early phase. Not usable for anything yet.
 
@@ -13,10 +12,10 @@ You can see high level structure with example drivers at https://miro.com/app/bo
 
 Tracking tasks, bugs, features at (private for now) https://app.clickup.com/2507589/v/b/s/6727213
 
-Repositories:
+## Repositories:
 
 * (main for now) https://gitlab.com/petrszturc/application-testing-helper
 * https://github.com/petrszturc/application-testing-helper
 
-Documentation:
- none yet.
+# Documentation:
+None yet.
