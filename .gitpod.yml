@@ -10,4 +10,6 @@ ports:
     visibility: private
 
 tasks:
+  - init: export PATH=/workspace/application-testing-helper:$PATH
+  - init: pip install --upgrade pip
   - init: pip install -r ./requirements.txt
