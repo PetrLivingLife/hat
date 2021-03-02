@@ -5,6 +5,7 @@ from hat import Hat
 
 
 class BaseTest(object):
+    # Class approach can't mix with fixtures (function approach). So the setup code and teardown is duplicated here.
 
     def setup_method(self):
         self.log = logging.getLogger(__name__)

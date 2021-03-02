@@ -8,29 +8,11 @@ from hat import Hat
 from application import AppUi
 from app_element import AppElement
 
+from tests.fixtures import hat, platform_driver, app
+
+
 setup_logging()
 log = logging.getLogger(__name__)
-
-
-@fixture
-def hat():
-    log.info(f"Starting Hat.")
-    return Hat()
-
-
-@fixture
-def platform_driver(hat: Hat):
-    log.info(f"Starting platform and driver.")
-    return hat.start_platform_driver('chromium', headless=True)
-
-
-@fixture
-def app(platform_driver):
-    platform_driver.open_app(f"https://google.com")
-    # platform_driver.open_app(f"https://seznam.cz")
-    yield AppUi(platform_driver)
-    log.info(f"Cleaning up.")
-    platform_driver.close()
 
 
 def test_simple_search(app: AppUi):
@@ -69,6 +51,11 @@ def test_use_platform_driver_directly(app, platform_driver):
 
 class TestClass(BaseTest):
     # Test also the class approach.
+
     def test_simple_search(self,):
+        self.app.home_screen.search("chata")
+        log.info(f"Title: {self.app.platform_driver.tab.title()}")
+
+    def test_multiple_tests_in_class(self,):
         self.app.home_screen.search("chata")
         log.info(f"Title: {self.app.platform_driver.tab.title()}")
