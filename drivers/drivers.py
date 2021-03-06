@@ -61,13 +61,12 @@ class BaseCustomDriver(AbstractDriver):
 
     def __init__(self,
                  ):
-        # Used to have access to any arguments passed from above even without passing them explicitly
         self.locator_type = self.locator_type
         self.name = self.name
-        # TODO Consider if this is correct name or: platform_driver or something else
         self.platform_driver = None
 
     def _process_args(self,):
+        # TODO rethink if this is needed.
         """
         Takes arguments, attributes, parameters from Hat and passes them to drivers.
         """
@@ -96,8 +95,7 @@ class BaseCustomDriver(AbstractDriver):
         pass
 
     def open_app(self, url):
-        # TODO open_app
-        self._open_app(url)
+        return self._open_app(url)
 
     def get_element(self, app_element):  # -> AppElement:
         """It is preffered to call this method with AppElement type.\n
