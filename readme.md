@@ -1,4 +1,4 @@
-# Application testing helper
+# Helper for automated testing
 
 PROTOTYPE - this project is currently in very early phase. Not usable for anything yet.
 
