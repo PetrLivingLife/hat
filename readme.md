@@ -14,8 +14,8 @@ Tracking tasks, bugs, features at (private for now) [clickup](https://app.clicku
 
 ## Repositories:
 
-* [gitlab](https://gitlab.com/petrszturc/helper-for-automated-testing) (main)
-* [github](https://github.com/petrszturc/helper-for-automated-testing)
+* [gitlab](https://gitlab.com/petrszturc/hat) (main)
+* [github](https://github.com/petrszturc/hat)
 
 # Documentation:
 None yet.
