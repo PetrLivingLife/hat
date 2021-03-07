@@ -1,7 +1,2 @@
-﻿desktop.ini
-geckodriver.log
-.idea
-_venv
-logs
+﻿logs
 *.pyc
-.bashrc
