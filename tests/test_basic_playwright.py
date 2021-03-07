@@ -1,14 +1,9 @@
 import logging
-from pytest import fixture
-# from time import sleep
 
 from tests.base_test import BaseTest
 from configuration import setup_logging
-from hat import Hat
 from application import AppUi
 from app_element import AppElement
-
-from tests.fixtures import hat, platform_driver, app
 
 
 setup_logging()
