@@ -4,7 +4,7 @@ PROTOTYPE - this project is currently in very early phase. Not usable for anythi
 
 Nothing revolutionary in here. Though I haven't seen such project/library/framework (that would be actually good and usable).
 
-For now this is very simple prototype to evolve. Idea is to have most/all (automated) testing needed in a project in one place.
+Idea is to have most/all (automated) testing needed in a project in one place.
 
 Driver/s can be written for any part of the application/system/multiple applications and then used in tests. Most of the time via additional layer/s that will simplify the usage.
 
