@@ -5,7 +5,8 @@ from abc import ABC, abstractmethod
 # from drivers.playwright_wrapper import CustomPlaywright
 # TODO Watch for circular imports
 # from hat import Hat
-from app_element import AppElement
+
+from application import AppElement
 
 
 log = logging.getLogger(__name__)
@@ -22,19 +23,19 @@ class AbstractDriver(ABC):
 
     @abstractmethod
     def _start(self, driver_to_start,):
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     def _open_app(self, *args, **kwargs,):
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     def _get_element(self, locator,):
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     def _close(self,):
-        raise NotImplementedError
+        pass
 
 
 class BaseCustomDriver(AbstractDriver):
@@ -76,12 +77,12 @@ class BaseCustomDriver(AbstractDriver):
         """Remaps any methods so they are the same (name, arguments, return type) across drivers."""
         # Warn if new driver doesn't have this method implemented.
         log.warning(f"Implement me: {__name__}.")
-        pass
+        raise NotImplementedError
 
     def _start(self, *args, **kwargs):
         # Warn if new driver doesn't have this method implemented.
         log.warning(f"Implement me: {__name__}.")
-        pass
+        raise NotImplementedError
 
     def start(self, headless=False):
         log.info(f"Starting platform and driver: {self.locator_type, self.name}")
@@ -92,7 +93,7 @@ class BaseCustomDriver(AbstractDriver):
     def _open_app(self, **kwargs):
         # Warn if new driver doesn't have this method implemented.
         log.warning(f"Implement me: {__name__}.")
-        pass
+        raise NotImplementedError
 
     def open_app(self, url):
         return self._open_app(url)
@@ -116,7 +117,7 @@ class BaseCustomDriver(AbstractDriver):
         # you may need to process the locator in some way, coming from self.get_element()
         # you should also implement logic to always return (new instance) AppElement even if the element is not present
         #  and set it with proper attributes like .is_present = False/True, .is_displayed = False/True ...
-        pass
+        raise NotImplementedError
 
     def close(self,):
         log.info(f"Closing platform and driver.")
@@ -125,4 +126,4 @@ class BaseCustomDriver(AbstractDriver):
     def _close(self,):
         # Warn if new driver doesn't have this method implemented.
         log.warning(f"Implement me: {__name__}")
-        pass
+        raise NotImplementedError

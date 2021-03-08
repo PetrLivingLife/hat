@@ -2,8 +2,8 @@ import logging
 
 from tests.base_test import BaseTest
 from configuration import setup_logging
-from application import AppUi
-from app_element import AppElement
+from google.application import AppUi
+from application import AppElement
 
 
 setup_logging()

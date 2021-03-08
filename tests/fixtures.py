@@ -2,7 +2,7 @@ from pytest import fixture
 import logging
 
 from hat import Hat
-from application import AppUi
+from google.application import AppUi
 
 
 log = logging.getLogger(__name__)

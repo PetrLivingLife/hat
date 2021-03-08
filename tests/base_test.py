@@ -1,6 +1,6 @@
 import logging
 
-from application import AppUi
+from google.application import AppUi
 from hat import Hat
 
 
