@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://gitlab.com/petrszturc/hat)
+
 # Helper for automated testing
 
 PROTOTYPE - this project is currently in very early phase. Not usable for anything yet.
