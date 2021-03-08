@@ -29,7 +29,7 @@ def test_directly_using_locators(app, platform_driver):
 
 
 def test_app_element_locators_specified_with_dictionary(app):
-    search_field_element = AppElement(locator_dict={"browser": "input[name='q']"})
+    search_field_element = AppElement(locator_dictionary={"browser": "input[name='q']"})
     log.info(f"Search field element attributes: {search_field_element.__dict__}")
     search_field = app.platform_driver.get_element(search_field_element.browser)
     search_field.type("chata")
