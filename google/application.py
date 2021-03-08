@@ -4,9 +4,10 @@ from application import AbstractAppUi, BaseScreen, AppElement
 class AppUi(AbstractAppUi):
     """Represents and contains all screens, their elements and possible actions.
 
-    Any screen you want to use in tests, should be instanced under this object.
+    Any screen you want to use in tests, should be instanced within _setup method.
+    It gets automatically called when AppUi is initialized before test.
     e.g.
-      self.home_screen = app_screens.home.HomeScreen(self)
+      self.home_screen = HomeScreen(self.platform_driver)
     """
 
     def _setup(self,):
