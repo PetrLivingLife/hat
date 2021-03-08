@@ -63,7 +63,7 @@ class AppElement(object):
         return self.__str__()
 
     def _add_locators_from_locator_dict(self):
-        if self.locator_dict:
+        if self.locator_dictionary:
             for locator_type, locator in self.locator_dictionary.items():
                 setattr(self, locator_type, locator)
 
