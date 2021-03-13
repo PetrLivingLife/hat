@@ -4,10 +4,8 @@ from application import AppElement
 from google import GoogleUi
 
 from tests.base_test import BaseTest
-from configuration import setup_logging
 
 
-setup_logging()
 log = logging.getLogger(__name__)
 
 

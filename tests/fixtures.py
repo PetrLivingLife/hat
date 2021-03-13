@@ -1,11 +1,17 @@
 import logging
 from pytest import fixture
 
+from configuration import setup_logging
 from google import GoogleUi
 from hat import Hat
 
 
 log = logging.getLogger(__name__)
+
+
+@fixture(autouse=True, scope='session')
+def logging_():
+    setup_logging()
 
 
 @fixture
