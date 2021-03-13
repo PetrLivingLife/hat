@@ -22,8 +22,9 @@ def hat():
 
 @fixture
 def platform_driver(hat: Hat):
-    log.info(f"Starting platform and driver.")
-    return hat.start_platform_driver('chromium', headless=False)
+    _platform_driver = hat.start_platform_driver('chromium', headless=False)
+    yield _platform_driver
+    teardown(_platform_driver)
 
 
 @fixture
@@ -31,7 +32,6 @@ def app(platform_driver):
     platform_driver.open_app(f"https://google.com")
     # platform_driver.open_app(f"https://seznam.cz")
     yield GoogleUi(platform_driver)
-    teardown(platform_driver)
 
 
 def teardown(platform_driver):
