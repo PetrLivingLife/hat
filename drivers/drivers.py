@@ -73,7 +73,7 @@ class BaseCustomDriver(AbstractDriver):
         """
         return {}
 
-    def _remap_methods(self,):
+    def _remap_methods(self, *args, **kwargs):
         """Remaps any methods so they are the same (name, arguments, return type) across drivers."""
         # Warn if new driver doesn't have this method implemented.
         log.warning(f"Implement me: {__name__}.")
