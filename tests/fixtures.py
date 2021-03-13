@@ -1,8 +1,8 @@
-from pytest import fixture
 import logging
+from pytest import fixture
 
+from google import GoogleUi
 from hat import Hat
-from google.application import AppUi
 
 
 log = logging.getLogger(__name__)
@@ -24,7 +24,7 @@ def platform_driver(hat: Hat):
 def app(platform_driver):
     platform_driver.open_app(f"https://google.com")
     # platform_driver.open_app(f"https://seznam.cz")
-    yield AppUi(platform_driver)
+    yield GoogleUi(platform_driver)
     teardown(platform_driver)
 
 

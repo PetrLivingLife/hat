@@ -1,8 +1,6 @@
 import logging
 
-# from appium import webdriver as appium_driver
-
-from drivers import Firefox, Chromium, Webkit
+from drivers import Chromium, Firefox, Webkit
 
 
 log = logging.getLogger(__name__)

@@ -1,4 +1,4 @@
-from google.application import AppUi as GoogleUi
+from google.application import GoogleUi as GoogleUi
 
 
 __all__ = [

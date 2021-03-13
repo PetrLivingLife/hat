@@ -1,16 +1,17 @@
 import logging
 
+from application import AppElement
+from google import GoogleUi
+
 from tests.base_test import BaseTest
 from configuration import setup_logging
-from google.application import AppUi
-from application import AppElement
 
 
 setup_logging()
 log = logging.getLogger(__name__)
 
 
-def test_simple_search(app: AppUi):
+def test_simple_search(app: GoogleUi):
     app.home_screen.search("chata")
     log.info(f"Title: {app.platform_driver.tab.title()}")
 

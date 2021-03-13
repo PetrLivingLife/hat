@@ -1,4 +1,4 @@
-from os import path, mkdir
+from os import mkdir, path
 
 from yaml import safe_load
 

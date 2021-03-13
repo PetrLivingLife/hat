@@ -1,6 +1,6 @@
 import logging
 
-from google.application import AppUi
+from google import GoogleUi
 from hat import Hat
 
 
@@ -13,7 +13,7 @@ class BaseTest(object):
         self.hat = Hat()
         self.platform_driver = self.hat.start_platform_driver('chromium', headless=False)
         self.platform_driver.open_app(f"https://google.com")
-        self.app = AppUi(self.platform_driver)
+        self.app = GoogleUi(self.platform_driver)
 
     def teardown_method(self):
         self.log.info(f"Cleaning after test.")

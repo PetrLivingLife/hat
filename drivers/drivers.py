@@ -1,12 +1,12 @@
 import logging
 from abc import ABC, abstractmethod
 
-# from application import AppUi
-# from drivers.playwright_wrapper import CustomPlaywright
-# TODO Watch for circular imports
-# from hat import Hat
-
 from application import AppElement
+
+# TODO Watch for circular imports, these are used for type hinting
+# from application import AppUi
+# from drivers import BaseCustomDriver
+# from hat import Hat
 
 
 log = logging.getLogger(__name__)

@@ -1,7 +1,7 @@
-from application import AbstractAppUi, BaseScreen, AppElement
+from application import AbstractAppUi, AppElement, BaseScreen
 
 
-class AppUi(AbstractAppUi):
+class GoogleUi(AbstractAppUi):
     """Represents and contains all screens, their elements and possible actions.
 
     Any screen you want to use in tests, should be instanced within _setup method.
@@ -19,8 +19,7 @@ class HomeScreen(BaseScreen):
         browser='input[name="q"]',
         android='//xpath',
         ios='XCUITestElementField.search',
-        )  # Google
-    # SEARCH_FIELD = AppElement(browser='div.search-form input')  # Seznam
+        )
 
     def search(self, term: str):
         self.SEARCH_FIELD.fill(term)

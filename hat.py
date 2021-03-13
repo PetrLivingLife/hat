@@ -1,6 +1,6 @@
-from configuration import RegisteredDrivers
 import logging
 
+from configuration import RegisteredDrivers
 
 log = logging.getLogger(__name__)
 
