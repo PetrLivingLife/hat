@@ -1,8 +1,0 @@
-requests
-pytest
-
-python-box
-PyYAML
-
-Appium-Python-Client
-playwright
