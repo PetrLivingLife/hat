@@ -2,4 +2,4 @@
 
 pipenv install --dev
 
-python -m playwright install
+pipenv run python -m playwright install
