@@ -3,7 +3,7 @@ from pytest import fixture
 
 from configuration import setup_logging
 from google import GoogleUi
-from hat import Hat
+import hat
 
 
 log = logging.getLogger(__name__)
@@ -15,13 +15,7 @@ def logging_():
 
 
 @fixture
-def hat():
-    log.info(f"Starting Hat.")
-    return Hat()
-
-
-@fixture
-def platform_driver(hat: Hat):
+def platform_driver():
     _platform_driver = hat.start_platform_driver('chromium', headless=False)
     yield _platform_driver
     teardown(_platform_driver)
