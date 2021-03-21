@@ -40,7 +40,7 @@ class AppElement(object):
     Parameters:
     locator_dictionary: dictionary with {'platform/locator type': 'locator'} items.
         This is mainly useful if you want to use custom driver and none of existing attributes suites that.
-        Locator type (key) has to have same value as .locator_type attribute of your driver.
+        Locator type (key) has to have same value as .platform_type attribute of your driver.
     """
 
     def __init__(self,
@@ -71,8 +71,8 @@ class AppElement(object):
 
     def _add_locators_from_locator_dict(self):
         if self.locator_dictionary:
-            for locator_type, locator in self.locator_dictionary.items():
-                setattr(self, locator_type, locator)
+            for platform_type, locator in self.locator_dictionary.items():
+                setattr(self, platform_type, locator)
 
     def is_displayed(self):
         # I haven't found a way yet to make this working as I need the instance also here,

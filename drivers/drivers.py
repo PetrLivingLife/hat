@@ -23,7 +23,7 @@ class BaseCustomDriver(ABC):
 
     Attributes:
 
-    locator_type : str
+    platform_type : str
         Identifies what attribute to select from AppElement by its name. e.g. 'browser', 'android', 'ios'
 
     name : str
@@ -32,16 +32,16 @@ class BaseCustomDriver(ABC):
 
     # TODO implement these as abstract as well if possible
     name: str
-    locator_type: str
+    platform_type: str
 
     def __init__(self,
                  ):
-        self.locator_type = self.locator_type
+        self.platform_type = self.platform_type
         self.name = self.name
         self.platform_driver = None
 
     def start(self, headless=False, *args, **kwargs):
-        log.info(f"Starting platform and driver: {self.locator_type, self.name}")
+        log.info(f"Starting platform and driver: {self.platform_type, self.name}")
         # run method returned by _start() and pass arguments to it
         self.platform_driver = self._start(headless=headless, *args, **kwargs)
         return self
@@ -79,7 +79,7 @@ class BaseCustomDriver(ABC):
         """
         log.debug(f"Looking for element: {app_element}")
         if isinstance(app_element, AppElement):
-            return self._get_element(getattr(app_element, self.locator_type))
+            return self._get_element(getattr(app_element, self.platform_type))
         # If called with just locator:
         return self._get_element(app_element)
 

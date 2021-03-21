@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 class CustomPlaywright(BaseCustomDriver):
     """Wrap around existing Playwright to customise it for running inside this framework.
     """
-    locator_type = 'browser'
+    platform_type = 'browser'
 
     def _remap_methods(self, obj):
         # Can be called only after new_page() is called
