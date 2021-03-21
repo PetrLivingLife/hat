@@ -16,4 +16,10 @@ class Hat(object):
 
     def start_platform_driver(self, driver_to_start: str, **kwargs):
         driver = RegisteredDrivers.get_driver_by_name(driver_to_start)
-        return driver().start(**kwargs)
+        try:
+            return driver().start(**kwargs)
+        except TypeError as e:
+            log.error(f"{e}")
+            if "Can't instantiate abstract class" in str(e):
+                log.error(f"Add implementation to your driver: {e}")
+            raise e
