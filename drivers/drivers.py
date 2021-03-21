@@ -5,7 +5,6 @@ from application import AppElement
 
 # TODO Watch for circular imports, these are used for type hinting
 # from application import AppUi
-# from drivers import BaseCustomDriver
 # from hat import Hat
 
 
