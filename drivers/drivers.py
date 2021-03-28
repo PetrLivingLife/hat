@@ -62,7 +62,6 @@ class BaseCustomDriver(ABC):
 
     @abstractmethod
     def _close(self,):
-        self.get_element()
         pass
 
     def get_element(self, app_element):  # -> AppElement:
