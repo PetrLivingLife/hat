@@ -1,32 +1,32 @@
 import logging
 from abc import ABC, abstractmethod
 
-from application import AppElement
+from playwright.sync_api import sync_playwright
 
-# TODO Watch for circular imports, these are used for type hinting
-# from application import AppUi
-# from hat import Hat
+import application
 
 
 log = logging.getLogger(__name__)
 
 
-class BaseCustomDriver(ABC):
-    """Basic/abstract implementation with all methods that should every driver support.
+class AbstractPlatformDriver(ABC):
+    # TODO Move this together in with platforms most probably
+    """Abstract implementation with all methods that should every platform driver support.
 
     When implementing custom driver, you should inherit from this class and implement needed methods.
-    You should implement (overwrite) methods only with underscore, e.g. _start()
-        as start() etc. is exposed to test and its behaviour shouldn't alter between platforms.
+    You should implement methods only with underscore, e.g. _start()
+        as open_app() etc. is exposed to test and its behaviour shouldn't alter between platforms.
     You will get warning messages in logs in case a method is missing its implementation.
     You should also set all needed attributes per driver implementation.
 
     Attributes:
 
+    name : str
+        String by which drivers are resolved to be used for tests.
+
     platform_type : str
         Identifies what attribute to select from AppElement by its name. e.g. 'browser', 'android', 'ios'
 
-    name : str
-        String by which drivers are resolved to be used for tests.
     """
 
     # TODO implement these as abstract as well if possible
@@ -34,16 +34,14 @@ class BaseCustomDriver(ABC):
     platform_type: str
 
     def __init__(self,
+                 headless: bool = False,
+                 *args,
+                 **kwargs,
                  ):
         self.platform_type = self.platform_type
         self.name = self.name
-        self.platform_driver = None
-
-    def start(self, headless=False, *args, **kwargs):
         log.info(f"Starting platform and driver: {self.platform_type, self.name}")
-        # run method returned by _start() and pass arguments to it
         self.platform_driver = self._start(headless=headless, *args, **kwargs)
-        return self
 
     @abstractmethod
     def _start(self,):
@@ -76,7 +74,7 @@ class BaseCustomDriver(ABC):
             TODO AppElement: element to perform operations on.
         """
         log.debug(f"Looking for element: {app_element}")
-        if isinstance(app_element, AppElement):
+        if isinstance(app_element, application.AppElement):
             return self._get_element(getattr(app_element, self.platform_type))
         # If called with just locator:
         return self._get_element(app_element)
@@ -104,3 +102,60 @@ class BaseCustomDriver(ABC):
     def _remap_methods(self,):
         # TODO Rethink if this can be done better
         pass
+
+
+class Playwright(AbstractPlatformDriver):
+    """Wrap around existing Playwright to customise it for running inside this framework.
+    """
+    platform_type = 'browser'
+
+    def _remap_methods(self, obj):
+        # Can be called only after new_page() is called
+        obj.go_to = obj.goto
+        return obj
+
+    def _open_app(self, url: str):
+        # TODO Rewrite this with loading url from configuration
+        # TODO Should .tab become app_instance and be universal across platforms?
+        self.tab = self.platform_driver.new_page()
+        self.tab = self._remap_methods(self.tab)
+        self.tab.go_to(f"{url}")
+        return self.tab
+
+    def _close(self):
+        self.platform_driver.close()
+        self.playwright.stop()
+
+    def _get_element(self, locator):
+        # TODO Either here or in BaseCustomDriver implement logic to return AppElement instead of 'NoneType'
+        return self.tab.query_selector(locator)
+
+    def _start(self, headless: bool, **kwargs):
+        self.playwright = sync_playwright().start()
+        # Playwright..launch doesn't handle **kwargs, so I have to use explicit arguments
+        return self._get_specific_browser().launch(headless=headless)
+
+    def _get_specific_browser(self,):
+        # To be implemented in browser specific class
+        pass
+
+
+class Chromium(Playwright):
+    name = 'chromium'
+
+    def _get_specific_browser(self):
+        return self.playwright.chromium
+
+
+class Firefox(Playwright):
+    name = 'firefox'
+
+    def _get_specific_browser(self):
+        return self.playwright.firefox
+
+
+class Webkit(Playwright):
+    name = 'webkit'
+
+    def _get_specific_browser(self):
+        return self.playwright.webkit

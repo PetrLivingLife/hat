@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 requests = "*"
-python-box = "*"
 playwright = "*"
 Appium-Python-Client = "*"
 

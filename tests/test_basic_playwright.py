@@ -1,7 +1,7 @@
 import logging
 
 from application import AppElement
-from google import GoogleUi
+from test_applications.google import GoogleUi
 
 from tests.base_test import BaseTest
 

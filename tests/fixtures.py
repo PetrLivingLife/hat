@@ -2,7 +2,7 @@ import logging
 from pytest import fixture
 
 from configuration import setup_logging
-from google import GoogleUi
+from test_applications.google import GoogleUi
 import hat
 
 

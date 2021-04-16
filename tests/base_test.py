@@ -1,6 +1,6 @@
 import logging
 
-from google import GoogleUi
+from test_applications.google import GoogleUi
 import hat
 
 
@@ -12,7 +12,7 @@ class BaseTest(object):
         self.log.info(f"Test case setup")
 
         try:
-            self.platform_driver = hat.start_platform_driver('chromium', headless=False)
+            self.platform_driver = hat.start_platform_driver('chromium')
             self.platform_driver.open_app(f"https://google.com")
             self.app = GoogleUi(self.platform_driver)
         except Exception as e:

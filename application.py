@@ -1,6 +1,8 @@
 import logging
 from abc import ABC, abstractmethod
 
+import platform_drivers
+
 
 log = logging.getLogger(__name__)
 
@@ -15,7 +17,7 @@ class AbstractAppUi(ABC):
     """
 
     def __init__(self,
-                 platform_driver,
+                 platform_driver: platform_drivers.AbstractPlatformDriver,
                  ):
         self.platform_driver = platform_driver
         self._setup()
@@ -28,7 +30,7 @@ class AbstractAppUi(ABC):
 class BaseScreen(object):
     def __init__(
                  self,
-                 platform_driver,
+                 platform_driver: platform_drivers.AbstractPlatformDriver,
                  ):
         # Platform driver is needed here, so that later .get_element methods can call it.
         self.platform_driver = platform_driver

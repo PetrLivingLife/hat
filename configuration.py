@@ -3,8 +3,6 @@ import logging
 import logging.config
 import logging.handlers
 
-from box import Box
-
 from utilities import check_or_create_dir, load_yaml
 
 
@@ -16,7 +14,6 @@ def setup_logging(log_config_filepath=None,
     check_or_create_dir(logs_location)
 
     log_config_filepath = log_config_filepath or path.join(getcwd(),
-                                                           "configuration",
                                                            "logging_configuration.yaml", )
 
     if path.exists(log_config_filepath):
@@ -63,10 +60,3 @@ def setup_logging(log_config_filepath=None,
                   f"Logs: {logs_location} "
                   f"Level: {logging_level} ")
     log = logging.getLogger(__name__)
-
-
-def load_config(profile):
-    filepath = path.join(getcwd(),
-                         "configuration",
-                         f"{profile}.yaml")
-    return Box(load_yaml(filepath))
