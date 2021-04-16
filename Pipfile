@@ -7,10 +7,10 @@ name = "pypi"
 requests = "*"
 python-box = "*"
 playwright = "*"
-PyYAML = "*"
 Appium-Python-Client = "*"
 
 [dev-packages]
+PyYAML = "*"
 pytest = "*"
 pylama = "*"
 
