@@ -10,7 +10,6 @@ log = logging.getLogger(__name__)
 
 
 class AbstractPlatformDriver(ABC):
-    # TODO Move this together in with platforms most probably
     """Abstract implementation with all methods that should every platform driver support.
 
     When implementing custom driver, you should inherit from this class and implement needed methods.
