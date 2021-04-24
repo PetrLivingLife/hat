@@ -65,11 +65,8 @@ class AppElement(object):
         # Leave the platform resolution to Driver().
         return instance._driver.get_element(self)
 
-    def __str__(self):
-        return str({"AppElement": self.__dict__})
-
     def __repr__(self):
-        return self.__str__()
+        return f"{self.__class__.__name__}: {self.__dict__}"
 
     def _add_locators_from_locator_dict(self):
         if self.locator_dictionary:
