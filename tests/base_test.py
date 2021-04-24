@@ -12,9 +12,9 @@ class BaseTest(object):
         self.log.info(f"Test case setup")
 
         try:
-            self.platform_driver = hat.start_platform_driver('chromium')
-            self.platform_driver.open_app(f"https://google.com")
-            self.app = GoogleUi(self.platform_driver)
+            self.driver = hat.start_driver('chromium')
+            self.driver.open_app(f"https://google.com")
+            self.app = GoogleUi(self.driver)
         except Exception as e:
             try:
                 self.teardown_method()
@@ -25,4 +25,4 @@ class BaseTest(object):
     def teardown_method(self):
         self.log.info(f"Cleaning after test.")
         self.log.info(f"Closing application.")
-        self.platform_driver.close()
+        self.driver.close()

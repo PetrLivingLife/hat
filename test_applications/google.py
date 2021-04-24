@@ -4,7 +4,7 @@ from application import AbstractAppUi, AppElement, BaseScreen
 class GoogleUi(AbstractAppUi):
 
     def _setup(self,):
-        self.home_screen = HomeScreen(self.platform_driver)
+        self.home_screen = HomeScreen(self.driver)
 
 
 class HomeScreen(BaseScreen):

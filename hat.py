@@ -3,15 +3,15 @@ Sits on top - hence the name. Plus hat=helper for application testing, haha.
 """
 import logging
 
-import registered_platform_drivers
+import registered_drivers
 
 
 log = logging.getLogger(__name__)
 
 
 # TODO Add loading configuration and adding it here
-def start_platform_driver(driver_to_start: str, *args, **kwargs):
-    driver = registered_platform_drivers.get_platform_driver_by_name(driver_to_start)
+def start_driver(driver_to_start: str, *args, **kwargs):
+    driver = registered_drivers.get_driver_by_name(driver_to_start)
     try:
         return driver(*args, **kwargs)
     except TypeError as e:

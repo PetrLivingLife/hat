@@ -15,20 +15,20 @@ def logging_():
 
 
 @fixture
-def platform_driver():
-    _platform_driver = hat.start_platform_driver('chromium', headless=False)
-    yield _platform_driver
-    teardown(_platform_driver)
+def driver():
+    driver_ = hat.start_driver('chromium', headless=False)
+    yield driver_
+    teardown(driver_)
 
 
 @fixture
-def app(platform_driver):
-    platform_driver.open_app(f"https://google.com")
-    # platform_driver.open_app(f"https://seznam.cz")
-    yield GoogleUi(platform_driver)
+def app(driver):
+    driver.open_app(f"https://google.com")
+    # driver.open_app(f"https://seznam.cz")
+    yield GoogleUi(driver)
 
 
-def teardown(platform_driver):
+def teardown(driver):
     log.info(f"Cleaning after test.")
     log.info(f"Closing application.")
-    platform_driver.close()
+    driver.close()

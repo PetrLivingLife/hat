@@ -3,22 +3,22 @@ Contains platform drivers ready to use in tests.
 """
 import logging
 
-from platform_drivers import Chromium, Firefox, Webkit
+import drivers
 
 
 log = logging.getLogger(__name__)
 
 
 all = (
-    Firefox,
-    Chromium,
-    Webkit,
+    drivers.Firefox,
+    drivers.Chromium,
+    drivers.Webkit,
     # IOS,
     # ANDROID,
     )
 
 
-def get_platform_driver_by_name(name: str):
+def get_driver_by_name(name: str):
     try:
         return {driver.name: driver for driver in all}[name]
     except KeyError:

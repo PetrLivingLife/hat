@@ -1,7 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 
-import platform_drivers
+import drivers
 
 
 log = logging.getLogger(__name__)
@@ -13,13 +13,13 @@ class AbstractAppUi(ABC):
     Any screen you want to use in tests, should be instanced within _setup method.
     It gets automatically called when AppUi is initialized before test.
     e.g.
-      self.home_screen = HomeScreen(self.platform_driver)
+      self.home_screen = HomeScreen(self.driver)
     """
 
     def __init__(self,
-                 platform_driver: platform_drivers.AbstractPlatformDriver,
+                 driver: drivers.Driver,
                  ):
-        self.platform_driver = platform_driver
+        self.driver = driver
         self._setup()
 
     @abstractmethod
@@ -30,10 +30,10 @@ class AbstractAppUi(ABC):
 class BaseScreen(object):
     def __init__(
                  self,
-                 platform_driver: platform_drivers.AbstractPlatformDriver,
+                 driver: drivers.Driver,
                  ):
         # Platform driver is needed here, so that later .get_element methods can call it.
-        self.platform_driver = platform_driver
+        self._driver = driver
 
 
 class AppElement(object):
@@ -63,7 +63,7 @@ class AppElement(object):
                 owner,
                 ):
         # Leave the platform resolution to Driver().
-        return instance.platform_driver.get_element(self)
+        return instance._driver.get_element(self)
 
     def __str__(self):
         return str({"AppElement": self.__dict__})

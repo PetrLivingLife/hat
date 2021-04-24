@@ -9,7 +9,7 @@ import application
 log = logging.getLogger(__name__)
 
 
-class AbstractPlatformDriver(ABC):
+class Driver(ABC):
     """Abstract implementation with all methods that should every platform driver support.
 
     When implementing custom driver, you should inherit from this class and implement needed methods.
@@ -40,7 +40,7 @@ class AbstractPlatformDriver(ABC):
         self.platform_type = self.platform_type
         self.name = self.name
         log.info(f"Starting platform and driver: {self.platform_type, self.name}")
-        self.platform_driver = self._start(headless=headless, *args, **kwargs)
+        self.native_driver = self._start(headless=headless, *args, **kwargs)
 
     @abstractmethod
     def _start(self,):
@@ -103,7 +103,7 @@ class AbstractPlatformDriver(ABC):
         pass
 
 
-class Playwright(AbstractPlatformDriver):
+class Playwright(Driver):
     """Wrap around existing Playwright to customise it for running inside this framework.
     """
     platform_type = 'browser'
@@ -116,13 +116,13 @@ class Playwright(AbstractPlatformDriver):
     def _open_app(self, url: str):
         # TODO Rewrite this with loading url from configuration
         # TODO Should .tab become app_instance and be universal across platforms?
-        self.tab = self.platform_driver.new_page()
+        self.tab = self.native_driver.new_page()
         self.tab = self._remap_methods(self.tab)
         self.tab.go_to(f"{url}")
         return self.tab
 
     def _close(self):
-        self.platform_driver.close()
+        self.native_driver.close()
         self.playwright.stop()
 
     def _get_element(self, locator):
