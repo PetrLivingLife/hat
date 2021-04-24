@@ -129,10 +129,10 @@ class Playwright(Driver):
         # TODO Either here or in BaseCustomDriver implement logic to return AppElement instead of 'NoneType'
         return self.tab.query_selector(locator)
 
-    def _start(self, headless: bool, **kwargs):
+    def _start(self, headless=False, locale='en-GB', **kwargs):
         self.playwright = sync_playwright().start()
-        # Playwright..launch doesn't handle **kwargs, so I have to use explicit arguments
-        return self._get_specific_browser().launch(headless=headless)
+        browser = self._get_specific_browser().launch(headless=headless)
+        return browser.new_context(locale=locale)
 
     def _get_specific_browser(self,):
         # To be implemented in browser specific class

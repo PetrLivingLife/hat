@@ -12,7 +12,7 @@ class BaseTest(object):
         self.log.info(f"Test case setup")
 
         try:
-            self.driver = hat.start_driver('chromium')
+            self.driver = hat.start_driver('chromium', headless=False, locale='en-GB')
             self.driver.open_app(f"https://google.com")
             self.app = GoogleUi(self.driver)
         except Exception as e:

@@ -16,7 +16,7 @@ def logging_():
 
 @fixture
 def driver():
-    driver_ = hat.start_driver('chromium', headless=False)
+    driver_ = hat.start_driver('chromium', headless=False, locale='en-GB')
     yield driver_
     teardown(driver_)
 
