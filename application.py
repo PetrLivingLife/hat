@@ -7,7 +7,7 @@ import drivers
 log = logging.getLogger(__name__)
 
 
-class AbstractAppUi(ABC):
+class Application(ABC):
     """Represents and contains all screens, their elements and possible actions.
 
     Any screen you want to use in tests, should be instanced within _setup method.
@@ -27,7 +27,7 @@ class AbstractAppUi(ABC):
         pass
 
 
-class BaseScreen(object):
+class Screen(object):
     def __init__(
                  self,
                  driver: drivers.Driver,
@@ -59,7 +59,7 @@ class AppElement(object):
 
     def __get__(
                 self,
-                instance: BaseScreen,
+                instance: Screen,
                 owner,
                 ):
         # Leave the platform resolution to Driver().

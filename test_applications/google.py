@@ -1,13 +1,13 @@
-from application import AbstractAppUi, AppElement, BaseScreen
+from application import Application, AppElement, Screen
 
 
-class GoogleUi(AbstractAppUi):
+class GoogleUi(Application):
 
     def _setup(self,):
         self.home_screen = HomeScreen(self.driver)
 
 
-class HomeScreen(BaseScreen):
+class HomeScreen(Screen):
     SEARCH_FIELD = AppElement(
         browser='input[name="q"]',
         android='//xpath',
