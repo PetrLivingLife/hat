@@ -31,4 +31,4 @@ def app(driver):
 def teardown(driver):
     log.info(f"Cleaning after test.")
     log.info(f"Closing application.")
-    driver.close()
+    driver.quit()

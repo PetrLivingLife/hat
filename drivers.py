@@ -53,12 +53,20 @@ class Driver(ABC):
     def _open_app(self,):
         pass
 
-    def close(self,):
-        log.info(f"Closing platform and driver.")
-        return self._close()
+    def close_app(self,):
+        log.info(f"Closing application instance.")
+        return self._close_app()
 
     @abstractmethod
-    def _close(self,):
+    def _close_app(self,):
+        pass
+
+    def quit(self,):
+        log.info(f"Closing platform.")
+        return self._quit()
+
+    @abstractmethod
+    def _quit(self,):
         pass
 
     def get_element(self, app_element):  # -> AppElement:
@@ -121,8 +129,10 @@ class Playwright(Driver):
         self.tab.go_to(f"{url}")
         return self.tab
 
-    def _close(self):
+    def _close_app(self):
         self.native_driver.close()
+
+    def _quit(self):
         self.playwright.stop()
 
     def _get_element(self, locator):

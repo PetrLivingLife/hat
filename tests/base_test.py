@@ -25,4 +25,4 @@ class BaseTest(object):
     def teardown_method(self):
         self.log.info(f"Cleaning after test.")
         self.log.info(f"Closing application.")
-        self.driver.close()
+        self.driver.quit()
