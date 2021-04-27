@@ -144,6 +144,7 @@ class Playwright(Driver):
         browser = self._get_specific_browser().launch(headless=headless)
         return browser.new_context(locale=locale)
 
+    @abstractmethod
     def _get_specific_browser(self,):
         # To be implemented in browser specific class
         pass
