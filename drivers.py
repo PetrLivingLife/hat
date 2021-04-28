@@ -123,7 +123,6 @@ class Playwright(Driver):
 
     def _open_app(self, url: str):
         # TODO Rewrite this with loading url from configuration
-        # TODO Should .tab become app_instance and be universal across platforms?
         self.application_instance = self.native_driver.new_page()
         self._remap_methods(self.application_instance)
         self.application_instance.go_to(f"{url}")
