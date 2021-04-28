@@ -37,22 +37,11 @@ def test_app_element_locators_specified_with_dictionary(app):
     log.info(f"Title: {app.driver.application_instance.title()}")
 
 
-def test_use_platform_driver_directly(app, driver):
+def test_use_platform_driver_directly(app, driver: drivers.Driver):
     search_field = driver.get_element('input[name="q"]')
     search_field.type("chata")
     search_field.press("Enter")
     log.info(f"Title: {app.driver.application_instance.title()}")
-
-
-def test_new_tab(driver: drivers.Driver):
-    from time import sleep
-    # TODO And this is the dumm part - this is why I need to find better naming/structure
-    # my own custom platform driver.playwright.new_page()
-    driver.native_driver.new_page()
-    # sleep(5)
-    driver.native_driver.new_page()
-    driver.native_driver.new_page()
-    # sleep(5)
 
 
 class TestClass(BaseTest):
