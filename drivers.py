@@ -124,10 +124,10 @@ class Playwright(Driver):
     def _open_app(self, url: str):
         # TODO Rewrite this with loading url from configuration
         # TODO Should .tab become app_instance and be universal across platforms?
-        self.tab = self.native_driver.new_page()
-        self.tab = self._remap_methods(self.tab)
-        self.tab.go_to(f"{url}")
-        return self.tab
+        self.application_instance = self.native_driver.new_page()
+        self._remap_methods(self.application_instance)
+        self.application_instance.go_to(f"{url}")
+        return self.application_instance
 
     def _close_app(self):
         self.native_driver.close()
@@ -137,7 +137,7 @@ class Playwright(Driver):
 
     def _get_element(self, locator):
         # TODO Either here or in BaseCustomDriver implement logic to return AppElement instead of 'NoneType'
-        return self.tab.query_selector(locator)
+        return self.application_instance.query_selector(locator)
 
     def _start(self, headless=False, locale='en-GB', **kwargs):
         self.playwright = sync_playwright().start()
