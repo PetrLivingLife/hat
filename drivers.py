@@ -105,27 +105,16 @@ class Driver(ABC):
         """
         pass
 
-    @abstractmethod
-    def _remap_methods(self,):
-        # TODO Rethink if this can be done better
-        pass
-
 
 class Playwright(Driver):
     """Wrap around existing Playwright to customise it for running inside this framework.
     """
     platform_type = 'browser'
 
-    def _remap_methods(self, obj):
-        # Can be called only after new_page() is called
-        obj.go_to = obj.goto
-        return obj
-
     def _open_app(self, url: str):
         # TODO Rewrite this with loading url from configuration
         self.application_instance = self.native_driver.new_page()
-        self._remap_methods(self.application_instance)
-        self.application_instance.go_to(f"{url}")
+        self.application_instance.goto(f"{url}")
         return self.application_instance
 
     def _close_app(self):
