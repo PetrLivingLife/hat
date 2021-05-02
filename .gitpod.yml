@@ -3,7 +3,7 @@ image:
 
 tasks:
   - name: Terminal
-    command: source .gitpod_setup.sh
+    command: source .prepare_environment.sh
 
 ports:
   - port: 6080
