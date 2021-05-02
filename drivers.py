@@ -40,7 +40,7 @@ class Driver(ABC):
         self.platform_type = self.platform_type
         self.name = self.name
         log.info(f"Starting platform and driver: {self.platform_type, self.name}")
-        self.native_driver = self._start(headless=headless, *args, **kwargs)
+        self.platform_driver = self._start(headless=headless, *args, **kwargs)
 
     @abstractmethod
     def _start(self,):
@@ -113,12 +113,12 @@ class Playwright(Driver):
 
     def _open_app(self, url: str):
         # TODO Rewrite this with loading url from configuration
-        self.application_instance = self.native_driver.new_page()
+        self.application_instance = self.platform_driver.new_page()
         self.application_instance.goto(f"{url}")
         return self.application_instance
 
     def _close_app(self):
-        self.native_driver.close()
+        self.platform_driver.close()
 
     def _quit(self):
         self.playwright.stop()
