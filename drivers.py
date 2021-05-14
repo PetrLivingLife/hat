@@ -40,17 +40,17 @@ class Driver(ABC):
         self.platform_type = self.platform_type
         self.name = self.name
         log.info(f"Starting platform and driver: {self.platform_type, self.name}")
-        self.platform_driver = self._start(headless=headless, *args, **kwargs)
+        self.platform_driver = self._start(headless=headless, **kwargs)
 
     @abstractmethod
-    def _start(self,):
+    def _start(self, **kwargs):
         pass
 
-    def open_app(self, url):
+    def open_app(self, url, **kwargs):
         return self._open_app(url)
 
     @abstractmethod
-    def _open_app(self,):
+    def _open_app(self, **kwargs):
         pass
 
     def close_app(self,):
